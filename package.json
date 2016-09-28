@@ -10,5 +10,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Karen Sanchez/Chris Mora",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "yelp": "^1.0.1"
+  }
 }
