@@ -12,6 +12,8 @@
   "author": "Karen Sanchez/Chris Mora",
   "license": "ISC",
   "dependencies": {
+    "ejs": "^2.5.2",
+    "express": "^4.14.0",
     "yelp": "^1.0.1"
   },
   "devDependencies": {
