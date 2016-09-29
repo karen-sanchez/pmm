@@ -13,5 +13,8 @@
   "license": "ISC",
   "dependencies": {
     "yelp": "^1.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.10.2"
   }
 }
