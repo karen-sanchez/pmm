@@ -1,23 +1,14 @@
 var express = require('express');
 var app = express();
-
 // Request API access: http://www.yelp.com/developers/getting_started/api_access
 var Yelp = require('yelp');
 var config = require('./config');
-
 var secureYelp = new Yelp(config);
-
 /*these are categories we can add to our search
-	restaurants ""
-	breakfast => "breakfast_brunch"
 	
+	category_filter: "breakfast_brunch"
+	category_fitler: "desserts"
 */
-// var array = businesses
-// var random = Math.floor((Math.random() * array.length) + 1);
-// // console.log(array[random])
-
-// var result = array[random]
-// console.log(result)
 var randomizeResults = Math.floor(Math.random() * 999);
 // var search = secureYelp.search({ term: 'food', location: 'New+York', limit: 1, offset: randomizeResults})
 // .then(function (data) {
@@ -30,19 +21,44 @@ var randomizeResults = Math.floor(Math.random() * 999);
 // });
 app.set('view engine', 'ejs');
 
+// function myFunction(){
+// 	secureYelp.search({ 
+// 		term: 'food', 
+// 		location: 'New+York', 
+// 		category_filter: 'dessert', 
+// 		offset: randomizeResults})
+// 	.then(function (data) {
+// 		var businesses = data.businesses;
+// 		var random = Math.floor((Math.random() * businesses.length));
+// 		var result = businesses[random];
+// 		res.render('main', {
+// 			name: result.name,
+// 			img: result.image_url,
+// 			rating: result.rating,
+// 			url: result.url,
+// 			snippet: result.snippet_text
+// 		});
+// 	})
+// }
+
 app.use(express.static(__dirname + "/public"));
 //landing page 
 app.get('/', function (req, res) {
-	secureYelp.search({ term: 'food', location: 'New+York', offset: randomizeResults})
+	secureYelp.search({ 
+		term: 'food', 
+		location: 'New+York', 
+		category_filter: 'breakfast_brunch', 
+		offset: randomizeResults})
 	.then(function (data) {
 		var businesses = data.businesses;
-		var random = Math.floor((Math.random() * businesses.length) + 1);
+		var random = Math.floor((Math.random() * businesses.length));
 		var result = businesses[random];
-		console.log(result);
 		res.render('main', {
 			name: result.name,
 			img: result.image_url,
-			url: result.url
+			rating: result.rating,
+			url: result.url,
+			snippet: result.snippet_text
 		});
 	})
 	.catch(function (err) {
