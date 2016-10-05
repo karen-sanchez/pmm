@@ -4,17 +4,8 @@ body{
 .navbar-brand{
 	color: #F49E4C !important;
 }
-.breakfast{
+.choices{
 	background-color: #93E1D8;
-}
-.lunch{
-	background-color: #F4D06F;
-}
-.dinner{
-	background-color: #9CA3DB;
-}
-.dessert{
-	background-color: #E574BC;
 }
 
 .choice-border{
@@ -22,6 +13,4 @@ body{
 	border-radius: 3px;
 	margin-bottom: 5px;
 }
-.choices{
-	margin: 0 auto;
-}
+
