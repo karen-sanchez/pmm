@@ -1,29 +1,46 @@
 $(document).ready(function(){
 
-	$.getJSON('https://freegeoip.net/json/') 
-    .done (function(location){
+	$("#locButton").click(initiateGeolocation);
 
-		$('#latitude').html(location.latitude);
-		var geoLat = location.latitude;
-		// console.log(geoLat);
-		$('#longitude').html(location.longitude);
-		var geoLong = location.longitude;
-		// console.log(geoLong));
-		if (geoLat != geoLong ){
-			$.ajax({
-		      	url: '/test',
-		      	method: 'POST',
-		      	contentType: 'application/json',
-		      	data: JSON.stringify({ latitude: geoLat, longitude: geoLong }),
-		      	success: function(response){
-		      		console.log(response);
-		    	}
-	        });
-		}        
-	});
+	function initiateGeolocation(){
+		navigator.geolocation.getCurrentPosition(handleGeolocationQuery);
+	};
+
+    function handleGeolocationQuery(position){
+        userLat = position.coords.latitude;
+        userLong = position.coords.longitude; 
+
+
+       $.ajax({
+      	url: '/test',
+      	method: 'POST',
+      	contentType: 'application/json',
+      	data: JSON.stringify({ latitude: userLat, longitude: userLong}),
+      	success: function(response){
+      		console.log(response);
+      		console.log(userLat);
+    		}
+		}); 
+	};
 });
 
 
 
 
-	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
