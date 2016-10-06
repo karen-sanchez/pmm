@@ -10,25 +10,17 @@
 </head>
 <body>	
     
-    <% include partials/nav_bar %>
-
-    <div id="myCarousel" class="carousel slide">
-	    <div class="carousel-inner">
-	        <div class="item active" style="background: url(css/images/nachos.jpg) no-repeat left center; background-size: cover;">
-	        	<div class="container">
-	            	<div class="carousel-caption">
-		                <h1>Welcome to Plan My Meal!</h1>
-		                <p class="lead">I am sure that you and your special other often waste time trying to decide where to eat today. Well, if you are feeling adventurous, let PlanMyMeal decide that for you. The randomizer chooses where you should eat from breakfast to dessert!</p>
-	            	</div>
-	          	</div>
-	        </div>
-	    </div>
-	</div>
-		
+    <% include partials/nav_bar %>		
     <% include partials/food_choices %>
-      <!-- <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-      <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a> -->
-    <!-- /.carousel -->
+
+    <p>Click the button to get your coordinates.</p>
+
+    <button onclick="getLocation()" class="test">Try It</button>
+    <p id="demo"></p>
+
+    Latitude: <span id="latitude"></span><br>
+    Longitude: <span id="longitude"></span><br>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script type="text/javascript" src="/javascript/script.js"></script>
