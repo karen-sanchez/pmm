@@ -12,6 +12,7 @@
   "author": "Karen Sanchez/Chris Mora",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.15.2",
     "ejs": "^2.5.2",
     "express": "^4.14.0",
     "yelp": "^1.0.1"
