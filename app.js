@@ -1,8 +1,6 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser')
-
-// Request API access: http://www.yelp.com/developers/getting_started/api_access
 var Yelp = require('yelp');
 var config = require('./config');
 var secureYelp = new Yelp(config);
@@ -27,12 +25,38 @@ app.get('/', function (req, res) {
 });
 
 //breakfast ajax
-app.get('/yelp-results-breakfast', function(req,res){
+app.post('/yelp-results-breakfast', function(req,res){
+	// console.log(req.body.latlng)
 	secureYelp.search({ 
 		term: 'food', 
-		location: 'New+York', 
-		category_filter: 'breakfast_brunch', 
-		offset: randomizeResults
+		ll: req.body.latlng, 
+		category_filter: 'breakfast_brunch'
+		// offset: randomizeResults
+	})
+	.then(function (data) {
+		var businesses = data.businesses;
+		var random = Math.floor((Math.random() * businesses.length));
+		var result = businesses[random];
+		var resultInfo = 
+			{
+			name: result.name,
+			img: result.image_url,
+			rating: result.rating,
+			address: result.location.display_address,
+			url: result.url,
+			snippet: result.snippet_text
+		};
+		res.send({resultInfo: resultInfo});
+	})
+	.catch(function (err) {
+	  console.error(err);
+	});
+});
+app.post('/yelp-results-lunch-dinner', function(req,res){
+	secureYelp.search({ 
+		term: 'food', 
+		ll: req.body.latlng
+		// offset: randomizeResults
 	})
 	.then(function (data) {
 		var businesses = data.businesses;
@@ -52,38 +76,14 @@ app.get('/yelp-results-breakfast', function(req,res){
 	  console.error(err);
 	});
 });
-app.get('/yelp-results-lunch-dinner', function(req,res){
+app.post('/yelp-results-desserts', function(req,res){
 	secureYelp.search({ 
 		term: 'food', 
-		location: 'New+York', 
-		offset: randomizeResults
+		ll: req.body.latlng,
+		category_filter: 'desserts' 
+		// offset: randomizeResults
 	})
-	.then(function (data) {
-		var businesses = data.businesses;
-		var random = Math.floor((Math.random() * businesses.length));
-		var result = businesses[random];
-		var resultInfo = 
-			{
-			name: result.name,
-			img: result.image_url,
-			rating: result.rating,
-			url: result.url,
-			snippet: result.snippet_text
-		};
-		res.send({resultInfo: resultInfo});
-	})
-	.catch(function (err) {
-	  console.error(err);
-	});
-});
-app.get('/yelp-results-desserts', function(req,res){
-	secureYelp.search({ 
-		term: 'food', 
-		location: 'New+York', 
-		category_filter: 'desserts', 
-		offset: randomizeResults
-	})
-	.then(function (data) {
+	.then(function(data) {
 		var businesses = data.businesses;
 		var random = Math.floor((Math.random() * businesses.length));
 		var result = businesses[random];
