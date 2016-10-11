@@ -1,8 +1,14 @@
 $(document).ready(function(){
-	//breakfast choice
-	$('.breakfast-btn').on('click',function(){
+	//loads first choices
+	breakfastAjax();
+	lunchAjax();
+	dinnerAjax();
+	dessertAjax();
+
+	//ajax calls
+	function breakfastAjax(){
 		$.ajax({
-			url: '/yelp-results',
+			url: '/yelp-results-breakfast',
 			contentType: 'application/json',
 			success: function(response){
 				var breakfastDiv= $('#breakfast');
@@ -17,11 +23,10 @@ $(document).ready(function(){
 				');
 			}
 		});
-	});
-	// //lunch choice
-	$('.lunch-btn').on('click',function(){
+	};
+	function lunchAjax(){
 		$.ajax({
-			url: '/yelp-results',
+			url: '/yelp-results-lunch-dinner',
 			contentType: 'application/json',
 			success: function(response){
 				var lunchDiv= $('#lunch');
@@ -36,11 +41,10 @@ $(document).ready(function(){
 				');
 			}
 		});
-	});
-	//dinner choice
-	$('.dinner-btn').on('click',function(){
+	}
+	function dinnerAjax(){
 		$.ajax({
-			url: '/yelp-results',
+			url: '/yelp-results-lunch-dinner',
 			contentType: 'application/json',
 			success: function(response){
 				var dinnerDiv= $('#dinner');
@@ -55,11 +59,10 @@ $(document).ready(function(){
 				');
 			}
 		});
-	});
-	//dessert choice
-	$('.dessert-btn').on('click',function(){
+	}
+	function dessertAjax(){
 		$.ajax({
-			url: '/yelp-results',
+			url: '/yelp-results-desserts',
 			contentType: 'application/json',
 			success: function(response){
 				var dessertDiv= $('#dessert');
@@ -74,5 +77,13 @@ $(document).ready(function(){
 				');
 			}
 		});
-	});
+	}
+	//breakfast choice
+	$('.breakfast-btn').on('click',breakfastAjax);
+	// //lunch choice
+	$('.lunch-btn').on('click',lunchAjax);
+	//dinner choice
+	$('.dinner-btn').on('click', dinnerAjax);
+	//dessert choice
+	$('.dessert-btn').on('click', dessertAjax);
 });
