@@ -11,6 +11,17 @@ var secureYelp = new Yelp(config);
 app.set('view engine', 'ejs');
 app.use(bodyParser.json());
 app.use(express.static(__dirname + "/public"));
+
+/*these are categories we can add to our search
+	
+	category_filter: "breakfast_brunch"
+	category_fitler: "desserts"
+*/
+
+function metersToMiles(distance){
+	return Math.round(distance * 0.000621371192 * 100)/100;
+}
+
 app.get('/', function (req, res) {
   res.render('main');
 });
@@ -34,9 +45,10 @@ app.post('/yelp-results-breakfast', function(req,res){
 		var resultInfo = 
 			{
 			name: result.name,
-			img: result.image_url,
-			rating: result.rating,
-			address: result.location.display_address,
+			img: result.image_url.replace("ms.jpg", "l.jpg"),
+			numOfReviews: result.review_count,
+			rating: result.rating_img_url_large,
+			distance: metersToMiles(result.distance),
 			url: result.url,
 			snippet: result.snippet_text
 		};
@@ -49,9 +61,8 @@ app.post('/yelp-results-breakfast', function(req,res){
 app.post('/yelp-results-lunch', function(req,res){
 	secureYelp.search({ 
 		term: 'food', 
-		ll: req.body.latlng,
-		radius_filter: 9656,
-		sort: 1
+		ll: req.body.latlng
+		// offset: randomizeResults
 	})
 	.then(function (data) {
 		var businesses = data.businesses;
@@ -60,8 +71,10 @@ app.post('/yelp-results-lunch', function(req,res){
 		var resultInfo = 
 			{
 			name: result.name,
-			img: result.image_url,
-			rating: result.rating,
+			img: result.image_url.replace("ms.jpg", "l.jpg"),
+			numOfReviews: result.review_count,
+			rating: result.rating_img_url_large,
+			distance: metersToMiles(result.distance),
 			url: result.url,
 			snippet: result.snippet_text
 		};
@@ -71,6 +84,7 @@ app.post('/yelp-results-lunch', function(req,res){
 	  console.error(err);
 	});
 });
+
 app.post('/yelp-results-dinner', function(req,res){
 	secureYelp.search({ 
 		term: 'food', 
@@ -86,8 +100,10 @@ app.post('/yelp-results-dinner', function(req,res){
 		var resultInfo = 
 			{
 			name: result.name,
-			img: result.image_url,
-			rating: result.rating,
+			img: result.image_url.replace("ms.jpg", "l.jpg"),
+			numOfReviews: result.review_count,
+			rating: result.rating_img_url_large,
+			distance: metersToMiles(result.distance),
 			url: result.url,
 			snippet: result.snippet_text
 		};
@@ -112,8 +128,10 @@ app.post('/yelp-results-desserts', function(req,res){
 		var resultInfo = 
 			{
 			name: result.name,
-			img: result.image_url,
-			rating: result.rating,
+			img: result.image_url.replace("ms.jpg", "l.jpg"),
+			numOfReviews: result.review_count,
+			rating: result.rating_img_url_large,
+			distance: metersToMiles(result.distance),
 			url: result.url,
 			snippet: result.snippet_text
 		};
