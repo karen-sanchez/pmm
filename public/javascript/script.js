@@ -40,10 +40,10 @@ $(document).ready(function(){
 					breakfastDiv.html('\
 						<h1 class="meal-title">Breakfast</h1>\
 						<a href="' + info.url +'"</a>\
-						<h3>' + info.name + '</h3></a>\
-						<img class="choice-border" src="'+info.img + '">\
-						<h4>Rating:' + info.rating + 'Stars </h4>\
-						<p>' + info.snippet + '</p>\
+						<h2>' + info.name + '</h2></a>\
+						<img class="choice-border yelp-img" src="'+info.img + '">\
+						<img src="' + info.rating + '"><h3>'+'Number of Reviews: '+ info.numOfReviews +'</h3>\
+						<h3 class="text-center">'+ 'Distance: ' + info.distance + ' miles away' + '</h3>\
 					');
 				}
 			});
@@ -61,9 +61,9 @@ $(document).ready(function(){
 						<h1 class="meal-title">Lunch</h1>\
 						<a href="' + info.url +'"</a>\
 						<h3>' + info.name + '</h3></a>\
-						<img class="choice-border" src="'+info.img + '">\
+						<img class="choice-border yelp-img" src="'+info.img + '">\
 						<h4>Rating:' + info.rating + 'Stars </h4>\
-						<p>' + info.snippet + '</p>\
+						<p class="snippet text-center snippet">' + info.snippet + '</p>\
 					');
 				}
 			});
@@ -81,9 +81,9 @@ $(document).ready(function(){
 						<h1 class="meal-title">Dinner</h1>\
 						<a href="' + info.url +'"</a>\
 						<h3>' + info.name + '</h3></a>\
-						<img class="choice-border" src="'+info.img + '">\
+						<img class="choice-border yelp-img" src="'+info.img + '">\
 						<h4>Rating:' + info.rating + 'Stars </h4>\
-						<p>' + info.snippet + '</p>\
+						<p class="text-center snippet">' + info.snippet + '</p>\
 					');
 				}
 			});
@@ -101,9 +101,9 @@ $(document).ready(function(){
 						<h1 class="dessert">Dessert</h1>\
 						<a href="' + info.url +'"</a>\
 						<h3>' + info.name + '</h3></a>\
-						<img class="choice-border" src="'+info.img + '">\
+						<img class="choice-border yelp-img" src="'+info.img + '">\
 						<h4>Rating:' + info.rating + 'Stars </h4>\
-						<p>' + info.snippet + '</p>\
+						<p class="text-center snippet">' + info.snippet + '</p>\
 					');
 				}
 			});

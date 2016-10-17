@@ -2,6 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Plan My Meal</title>
     <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -9,13 +10,19 @@
    
 </head>
 <body>	
-    
-    <% include partials/nav_bar %>
 
+
+    <div class="jumbotron main text-center">
+        <div class="container">
+            <h1 class="display-1">Welcome to Cinch</h1>
+            <p class="display-2">Can't figure out what you want to eat?</p>
+            <p class="display-3">Get instant food choices from restaurants near you for any meal of the day including dessert!</p>
+        </div>
+    </div>
     <% include partials/food_choices %>
 
-    <div id='domLat'></div>
-    <div id='domLong'></div>
+    <p id='domLat'></div>
+    <p id='domLong'></div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script type="text/javascript" src="/javascript/script.js"></script>

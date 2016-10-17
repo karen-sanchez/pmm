@@ -1,21 +1,54 @@
 body{
 	font-family: 'Cabin', sans-serif;
 }
+
+#domLat{
+	display: none;
+}
+#domLong{
+	display: none;
+}
 .navbar-brand{
-	color: #F49E4C !important;
+	color:#F18F01 !important;
+}
+.meal-title{
+	color: #545F69;
 }
 .choices{
-	background-color: #93E1D8;
+	height: 500px;
+	margin-bottom: 0;
 }
-
-.choice-border{
-	border: solid 2px black;
-	border-radius: 3px;
+.choice-btn{
+	background-color: #F18F01;
+	border: solid 1px #222222;
 	margin-bottom: 5px;
 }
-.placeholder{
-	width: 200px;
-	max-height: 100%;
+
+.yelp-img{
+	border-radius: 5px;
+	border: solid 1px #222222 ;
+	max-width: 90%;
+	max-height: 50%;
 }
+
+.main{
+	color:white;
+	height: 450px;
+	
+/*	background-repeat: no-repeat;
+	background-image: url(/images/main.jpeg)*/
+	background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 59%, rgba(0, 0, 0, 0.65) 100%), url('/images/main.jpeg')no-repeat 100% 100%;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(59%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.65))), url('/images/main.jpeg') no-repeat;
+	background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 59%, rgba(0, 0, 0, 0.65) 100%), url('/images/main.jpeg') no-repeat;
+	background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 59%, rgba(0, 0, 0, 0.65) 100%), url('/images/main.jpeg')no-repeat;
+	background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 59%, rgba(0, 0, 0, 0.65) 100%), url('/images/main.jpeg') no-repeat;
+	background: linear-gradient(to bottom, rgba(241, 143, 1, .8) 0%, rgba(0, 0, 0, .6) 59%, rgba(0, 0, 0, 0.5) 100%), url('/images/main.jpeg') 50% 50% no-repeat;
+	background-size: cover;
+}
+
+
+/*queries*/
+
+
 
 
