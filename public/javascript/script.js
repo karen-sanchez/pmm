@@ -5,7 +5,6 @@ $(document).ready(function(){
 	function getLocation(){
 		if (navigator.geolocation){
 		    navigator.geolocation.getCurrentPosition(success);
-	    	navigator.geolocation.getCurrentPosition(showPosition);
 		} else {
 	    	console.log("Geolocation is not supported by this browser.");
 		}
@@ -51,7 +50,7 @@ $(document).ready(function(){
 		};
 		function lunchAjax(){
 			$.ajax({
-				url: '/yelp-results-lunch-dinner',
+				url: '/yelp-results-lunch',
 				method: 'POST',
 				contentType: 'application/json',
 				data: JSON.stringify({latlng: latlng}),
@@ -71,7 +70,7 @@ $(document).ready(function(){
 		}
 		function dinnerAjax(){
 			$.ajax({
-				url: '/yelp-results-lunch-dinner',
+				url: '/yelp-results-dinner',
 				method: 'POST',
 				contentType: 'application/json',
 				data: JSON.stringify({latlng: latlng}),
